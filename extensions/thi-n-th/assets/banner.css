@@ -1,0 +1,73 @@
+.thien-thu-banner {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: min(420px, calc(100vw - 40px));
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--thien-thu-banner-background);
+  color: var(--thien-thu-banner-color);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 20%);
+  font-family: sans-serif;
+  font-size: var(--thien-thu-banner-font-size);
+  line-height: 1.4;
+}
+
+.thien-thu-banner--top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.thien-thu-banner--top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.thien-thu-banner--bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.thien-thu-banner--bottom-right {
+  right: 20px;
+  bottom: 20px;
+}
+
+.thien-thu-banner__message {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.thien-thu-banner__link {
+  flex: none;
+  color: inherit;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.thien-thu-banner__close {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 14%);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.thien-thu-banner__close:hover {
+  background: rgb(255 255 255 / 24%);
+}
+
+.thien-thu-banner__close:focus-visible,
+.thien-thu-banner__link:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 3px;
+}
