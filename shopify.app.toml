@@ -1,8 +1,8 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "1a9c89f2c5f5284932390b63b6f2cdd8"
-name = "Thiên thư-天书"
-application_url = "https://example.com"
+name = "Quang App"
+application_url = "https://web-production-fbe0d.up.railway.app"
 embedded = true
 
 [build]
@@ -25,7 +25,7 @@ api_version = "2027-01"
 scopes = "write_products,write_metaobjects,write_metaobject_definitions"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://web-production-fbe0d.up.railway.app/auth/callback" ]
 
 [product.metafields.app.demo_info]
 type = "single_line_text_field"

@@ -30,6 +30,7 @@ The Liquid block renders the banner, CSS controls its appearance and position, a
 - Shopify CLI.
 - A Shopify Partner/Dev account.
 - A development store containing sample products.
+- A PostgreSQL database. The production deployment uses Supabase.
 
 ## Run locally
 
@@ -37,6 +38,8 @@ Install dependencies and prepare the Prisma session database:
 
 ```bash
 npm install
+cp .env.example .env
+# Fill in DATABASE_URL and the Shopify variables before continuing.
 npm run setup
 ```
 
@@ -88,6 +91,25 @@ npm run deploy       # Create and deploy a Shopify app version/config/extensions
 ```
 
 `shopify app deploy` deploys Shopify app configuration and extensions. It does not host the React Router backend; a production backend still needs a stable HTTPS hosting URL and persistent database.
+
+## Production deployment
+
+The production architecture uses Railway for the Node.js web service and
+Supabase PostgreSQL for Shopify session storage.
+
+1. In Supabase, copy the Session pooler connection string (port `5432`) into
+   Railway as `DATABASE_URL`.
+2. Deploy this repository as a Railway service. Railway detects the root
+   `Dockerfile`; its command runs Prisma migrations before starting the server.
+3. Add `SHOPIFY_API_KEY`, `SHOPIFY_API_SECRET`, `SHOPIFY_APP_URL`, `SCOPES`, and
+   `DATABASE_URL` to the Railway service variables.
+4. Generate a Railway public domain and use its HTTPS origin for
+   `SHOPIFY_APP_URL`, `application_url`, and the `/auth/callback` redirect URL.
+5. Configure Railway's healthcheck path as `/health`.
+6. Run `shopify app deploy` only after validating the final Shopify app config.
+
+Do not add Supabase API keys to this app. Prisma only needs the PostgreSQL
+connection string, and secrets must remain outside source control.
 
 ## Demo checklist
 
