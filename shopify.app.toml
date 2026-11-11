@@ -2,12 +2,11 @@
 
 client_id = "1a9c89f2c5f5284932390b63b6f2cdd8"
 name = "Quang App"
-application_url = "https://web-production-fbe0d.up.railway.app"
+application_url = "https://thi-n-th-production.up.railway.app"
 embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
-include_config_on_deploy = true
 
 [webhooks]
 api_version = "2027-01"
@@ -25,7 +24,9 @@ api_version = "2027-01"
 scopes = "write_products,write_metaobjects,write_metaobject_definitions"
 
 [auth]
-redirect_urls = [ "https://web-production-fbe0d.up.railway.app/auth/callback" ]
+redirect_urls = [
+  "https://thi-n-th-production.up.railway.app/auth/callback"
+]
 
 [product.metafields.app.demo_info]
 type = "single_line_text_field"
